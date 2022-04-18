@@ -2,6 +2,7 @@
 
 const express = require("express");
 
+var mysql = require('mysql');
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
@@ -13,8 +14,13 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.get("/test", (req, res) => {
-    res.json({ message: "Hello from server!" });
+app.get("/data", (req, res) => {
+    const sqlSelect = "SELECT * FROM DATA"
+    db.query(sqlSelect, (err, result) => {
+        res.send(result);
+        console.log(result);
+    })
+
 });
   
 app.listen(PORT, () => {
