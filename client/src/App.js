@@ -10,12 +10,12 @@ const Text = styled.p`
   line-height: 16px;
   color: #000000;
   margin-right: 1vw;
-  text-align: center;
 `
 
 const Container = styled.div`
   margin: 0px;
   padding : 0px;
+  text-align: center;
 `
 
 const Number = styled.div`
@@ -279,8 +279,16 @@ const SectionCol = styled(Section)`
     text-align: center;
     grid-template-columns: 4vw 7vw 12vw 14vw 14vw 10vw 14vw 14vw 10vw;
 `
+const Feed = () =>{
+    const [data, setdata] = useState([]);
 
-function App() {
+    useEffect (() => {
+      Axios.get("http://localhost:3001/").then((response) => {
+          setdata(response.data);
+          console.log(data)
+      });
+    }, []);
+
   return (
     <Container>
         <Number>No.</Number>
@@ -294,21 +302,27 @@ function App() {
         <ExitDate>Exit Date/Time</ExitDate>
       <Section>
         <BgContainer>
-            <SectionCol>
-              <Text>1.</Text>
-              <Text>10000125</Text>
-              <Text>à¹€à¸ˆà¸£à¸´à¸ à¹€à¸›à¹‰à¸à¸¥à¸²à¸‡</Text>
-              <Text>DMG-Staff Corridor 1-CR</Text>
-              <Text>DMG-Staff Corridor1 Door</Text>
-              <Text>9/8/2021 5:09</Text>
-              <Text>DMG-Staff Corridor 2-CR</Text>
-              <Text>DMG-Staff Corridor 2 Door</Text>
-              <Text>9/8/2021 10:23</Text>
-            </SectionCol>
+          <div className="feed">
+            {data.map((val)=> {
+              return (
+                <SectionCol>
+                  <Text>{val.no}</Text>
+                  <Text>{val.id}</Text>
+                  <Text>{val.name}</Text>
+                  <Text>{val.entry_reader}</Text>
+                  <Text>{val.entry_door}</Text>
+                  <Text>{val.entry_date_time}</Text>
+                  <Text>{val.exit_reader}</Text>
+                  <Text>{val.exit_door}</Text>
+                  <Text>{val.exit_date_time}</Text>
+                </SectionCol>
+              ); 
+            })}
+          </div>
         </BgContainer>
       </Section>
     </Container>
   );
 }
 
-export default App;
+export default Feed;
