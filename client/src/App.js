@@ -2,22 +2,30 @@ import React,{ useEffect , useState} from "react";
 import Axios from 'axios'
 
 const Feed = () =>{
-    const [feedPost, setFeedPost] = useState([]);
-  useEffect (() => {
-        Axios.get(`http://localhost:3001/`, {
-        }).then((response) => {
-            setFeedPost(response.data);
-        });
-  }, []);
-}
+    const [data, setdata] = useState([]);
 
+    useEffect (() => {
+      Axios.get("http://localhost:3001/").then((response) => {
+          setdata(response.data);
+          console.log(data)
+      });
+    }, []);
 
-function App() {
   return (
-    <div className = "App">
-      
+    <div className = "feed">
+      <h1>Data</h1>
+            <div>
+                {data.map((val)=> {
+                    return (
+                      <h5> {val.no}  {val.id}  {val.name}  {val.entry_reader} {val.entry_door} {val.entry_date_time} {val.exit_reader} {val.exit_door} {val.exit_date_time} </h5>
+                    ); 
+                })}
+            </div>
     </div>
   );
 }
+  
+  
 
-export default App;
+
+export default Feed;
