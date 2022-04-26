@@ -10,12 +10,14 @@ const Text = styled.p`
   line-height: 16px;
   color: #000000;
   margin-right: 1vw;
+  text-align: center;
 `
 
 const Container = styled.div`
   margin: 0px;
   padding : 0px;
-  text-align: center;
+  width: inherit;
+  height: inherit;
 `
 
 const Number = styled.div`
@@ -25,6 +27,7 @@ const Number = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 2vw;
@@ -51,6 +54,7 @@ const EmployeeID = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 5vw;
@@ -77,6 +81,7 @@ const CardholderName = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 10vw;
@@ -103,6 +108,7 @@ const EntryReader = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 12vw;
@@ -129,6 +135,7 @@ const EntryDoor = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 12vw;
@@ -155,6 +162,7 @@ const EntryDate = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 8vw;
@@ -181,6 +189,7 @@ const ExitReader = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 12vw;
@@ -207,6 +216,7 @@ const ExitDoor = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 12vw;
@@ -233,6 +243,7 @@ const ExitDate = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  text-align: center;
     
   position: absolute;
   width: 8vw;
@@ -255,15 +266,15 @@ const ExitDate = styled.div`
 const BgContainer = styled.div`
   position: fixed;
   display: flex;
-  z-index: -999;
+  z-index: 999;
   width: 98vw;
-  height: 70vh;
-  top: 25vh;
+  height: 66vh;
+  top: 27vh;
   margin-left: 1vw;
   margin-right: 1vw;
   overflow-y: scroll;
   overflow-x: hidden;
-  background: #F2F2F2;
+  background: #EBEBEB;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 `
@@ -275,10 +286,35 @@ const Section = styled.div`
 `
 
 const SectionCol = styled(Section)`
-    display : grid;
-    text-align: center;
-    grid-template-columns: 4vw 7vw 12vw 14vw 14vw 10vw 14vw 14vw 10vw;
+  display : grid;
+  text-align: center;
+  grid-template-columns: 4vw 7vw 12vw 14vw 14vw 10vw 14vw 14vw 10vw;
 `
+
+const SectionRow = styled(Section)`
+  display : grid;
+  text-align: center;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+`
+
+const ImgLogo = styled.img`
+  top: 1px;
+  width: 20%;
+  left: 1vw;
+`
+
+const Powered = styled.p`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  margin-right: 1vw;
+  margin-top: 83vh;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.6);
+`
+
 const Feed = () =>{
     const [data, setdata] = useState([]);
 
@@ -291,6 +327,13 @@ const Feed = () =>{
 
   return (
     <Container>
+      <Section>
+        <ImgLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/SRTET_Logo.svg/2560px-SRTET_Logo.svg.png"></ImgLogo>
+      </Section>
+      <Section>
+
+      </Section>
+      <Section>
         <Number>No.</Number>
         <EmployeeID>Employee ID</EmployeeID>
         <CardholderName>Cardholder Name</CardholderName>
@@ -300,6 +343,7 @@ const Feed = () =>{
         <ExitReader>Exit Reader</ExitReader>
         <ExitDoor>Exit Door</ExitDoor>
         <ExitDate>Exit Date/Time</ExitDate>
+      </Section>
       <Section>
         <BgContainer>
           <div className="feed">
@@ -321,6 +365,7 @@ const Feed = () =>{
           </div>
         </BgContainer>
       </Section>
+      <Powered>Powered by Computer Engineering, CMU #50</Powered>
     </Container>
   );
 }
