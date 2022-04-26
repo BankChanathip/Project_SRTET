@@ -1,6 +1,7 @@
 import React,{ useEffect , useState} from "react";
 import Axios from 'axios'
 import styled from 'styled-components';
+import './App.css';
 
 const Text = styled.p`
   font-family: 'Roboto';
@@ -34,7 +35,7 @@ const Number = styled.div`
   height: 3vh;
   margin-left: 1vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -61,7 +62,7 @@ const EmployeeID = styled.div`
   height: 3vh;
   margin-left: 5vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -88,7 +89,7 @@ const CardholderName = styled.div`
   height: 3vh;
   margin-left: 12vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -115,7 +116,7 @@ const EntryReader = styled.div`
   height: 3vh;
   margin-left: 24vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -142,7 +143,7 @@ const EntryDoor = styled.div`
   height: 3vh;
   margin-left: 38vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -169,7 +170,7 @@ const EntryDate = styled.div`
   height: 3vh;
   margin-left: 52vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -196,7 +197,7 @@ const ExitReader = styled.div`
   height: 3vh;
   margin-left: 62vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -223,7 +224,7 @@ const ExitDoor = styled.div`
   height: 3vh;
   margin-left: 76vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -250,7 +251,7 @@ const ExitDate = styled.div`
   height: 3vh;
   margin-left: 90vw;
   margin-right: 0.5vh;
-  margin-top: 18vh;
+  margin-top: 7vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -268,8 +269,8 @@ const BgContainer = styled.div`
   display: flex;
   z-index: 999;
   width: 98vw;
-  height: 66vh;
-  top: 27vh;
+  height: 73vh;
+  top: 21vh;
   margin-left: 1vw;
   margin-right: 1vw;
   overflow-y: scroll;
@@ -283,6 +284,41 @@ const Section = styled.div`
   display : flex;
   justify-content : space-between;
   align-items : center;
+  
+  .input-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input{
+      box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      width: 69.5vw;
+      height: 3.2em;
+      margin-right: 1vh;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .search-button{
+    border: 20px;
+    color: #FFFFFF;
+    width: 15vw;
+    height: 3.2em;
+    margin-right: 1vw;
+    background-color: #2F2F7C;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-align: center;
+  }
 `
 
 const SectionCol = styled(Section)`
@@ -301,6 +337,7 @@ const ImgLogo = styled.img`
   top: 1px;
   width: 20%;
   left: 1vw;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 `
 
 const Powered = styled.p`
@@ -317,6 +354,7 @@ const Powered = styled.p`
 
 const Feed = () =>{
     const [data, setdata] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect (() => {
       Axios.get("http://localhost:3001/").then((response) => {
@@ -325,13 +363,24 @@ const Feed = () =>{
       });
     }, []);
 
+    const searchPost = () => {
+      if(search != ''){
+          Axios.post("http://localhost:3001/", { 
+              item: search
+          }).then((response) => {
+              setdata(response.data);
+          })
+      }
+  };
+
   return (
     <Container>
       <Section>
         <ImgLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/SRTET_Logo.svg/2560px-SRTET_Logo.svg.png"></ImgLogo>
-      </Section>
-      <Section>
-
+        <form className="input-form">
+          <input type="text" placeholder="Employee ID, Cardholder Name..." name="item" onChange={(e)=>{setSearch(e.target.value)}} />
+        </form>
+          <button className="search-button" onClick={searchPost}> Find </button>
       </Section>
       <Section>
         <Number>No.</Number>
