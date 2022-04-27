@@ -35,7 +35,7 @@ const Number = styled.div`
   height: 3vh;
   margin-left: 1vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -62,7 +62,7 @@ const EmployeeID = styled.div`
   height: 3vh;
   margin-left: 5vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -89,7 +89,7 @@ const CardholderName = styled.div`
   height: 3vh;
   margin-left: 12vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -116,7 +116,7 @@ const EntryReader = styled.div`
   height: 3vh;
   margin-left: 24vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -143,7 +143,7 @@ const EntryDoor = styled.div`
   height: 3vh;
   margin-left: 38vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -170,7 +170,7 @@ const EntryDate = styled.div`
   height: 3vh;
   margin-left: 52vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -197,7 +197,7 @@ const ExitReader = styled.div`
   height: 3vh;
   margin-left: 62vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -224,7 +224,7 @@ const ExitDoor = styled.div`
   height: 3vh;
   margin-left: 76vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -251,7 +251,7 @@ const ExitDate = styled.div`
   height: 3vh;
   margin-left: 90vw;
   margin-right: 0.5vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
     
   background: #BF262C;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -270,9 +270,10 @@ const BgContainer = styled.div`
   z-index: 999;
   width: 98vw;
   height: 73vh;
-  top: 21vh;
+  top: 20vh;
   margin-left: 1vw;
   margin-right: 1vw;
+  margin-bottom: 1vh;
   overflow-y: scroll;
   overflow-x: hidden;
   background: #EBEBEB;
@@ -286,7 +287,6 @@ const Section = styled.div`
   align-items : center;
   
   .input-form{
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -341,13 +341,15 @@ const ImgLogo = styled.img`
 `
 
 const Powered = styled.p`
+  position: static;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
   margin-right: 1vw;
-  margin-top: 83vh;
+  margin-top: 82vh;
+  margin-bottom: 1vw;
   text-align: right;
   color: rgba(0, 0, 0, 0.6);
 `
@@ -414,7 +416,7 @@ const Feed = () =>{
           </div>
         </BgContainer>
       </Section>
-      <Powered>Powered by Computer Engineering, CMU #50</Powered>
+        <Powered>Powered by Computer Engineering, CMU #50</Powered>
     </Container>
   );
 }
